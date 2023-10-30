@@ -59,7 +59,7 @@ function nvim_picgo.setup(conf)
 	end
 	default_config = vim.tbl_extend("force", default_config, conf or {})
 	-- Create autocommand
-	vim.api.nvim_create_user_command("PicgoUplaod", nvim_picgo.upload_imagefile, { nargs = "?" })
+	vim.api.nvim_create_user_command("PicgoUpload", nvim_picgo.upload_imagefile, { nargs = "?" })
 end
 
 function nvim_picgo.upload_imagefile(opts)
