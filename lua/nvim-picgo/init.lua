@@ -15,14 +15,14 @@ local function notice(state)
 	if state then
 		local msg = "Upload image success"
 		if default_config.notice == "notify" then
-			vim.notify(msg, "info", { title = "Nvim-picgo" })
+			vim.notify(msg, vim.log.levels.INFO, { title = "Nvim-picgo" })
 		else
 			vim.api.nvim_echo({ { msg, "MoreMsg" } }, true, {})
 		end
 	else
 		local msg = "Upload image failed"
 		if default_config.notice == "notify" then
-			vim.notify(msg, "error", { title = "Nvim-picgo" })
+			vim.notify(msg, vim.log.levels.ERROR, { title = "Nvim-picgo" })
 		else
 			vim.api.nvim_echo({ { msg, "ErrorMsg" } }, true, {})
 		end
@@ -70,7 +70,7 @@ function nvim_picgo.upload_imagefile(opts)
 
 	if string.len(image_path) == 0 then
 		if default_config.notice == "notify" then
-			vim.notify("The image path is empty", "error", { title = "Nvim-picgo" })
+			vim.notify("The image path is empty", vim.log.levels.ERROR, { title = "Nvim-picgo" })
 		else
 			vim.api.nvim_echo({ { "The image path is empty", "ErrorMsg" } }, true, {})
 		end
@@ -84,7 +84,7 @@ function nvim_picgo.upload_imagefile(opts)
 
 	if vim.fn.filereadable(image_path) ~= 1 then
 		if default_config.notice == "notify" then
-			vim.notify("The image path is not valid", "error", { title = "Nvim-picgo" })
+			vim.notify("The image path is not valid", vim.log.levels.ERROR, { title = "Nvim-picgo" })
 		else
 			vim.api.nvim_echo({ { "Image path is not valid", "ErrorMsg" } }, true, {})
 		end
@@ -94,7 +94,7 @@ function nvim_picgo.upload_imagefile(opts)
 	assert(vim.fn.filereadable(image_path) == 1, "The image path is not valid")
 
 	if default_config.notice == "notify" then
-		vim.notify("Image start uploading...", "info", { title = "Nvim-picgo" })
+		vim.notify("Image start uploading...", vim.log.levels.INFO, { title = "Nvim-picgo" })
 	else
 		vim.api.nvim_echo({ { "Image start uploading...", "MoreMsg" } }, true, {})
 	end
