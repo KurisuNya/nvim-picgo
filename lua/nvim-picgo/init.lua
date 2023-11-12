@@ -1,7 +1,7 @@
 local nvim_picgo = {}
 
 local default_config = {
-	notice = "echo",
+	notice = "notify",
 	image_name = false,
 	debug = false,
 }
