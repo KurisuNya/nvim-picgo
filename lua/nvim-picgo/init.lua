@@ -26,7 +26,7 @@ local M = {}
 
 function M.upload_imagefile(opts)
 	-- get image path
-	local image_path = opts.args or ""
+	local image_path = opts.args or opts.path or ""
 	if string.len(image_path) == 0 then
 		image_path = vim.fn.input("Image path: ")
 	end
