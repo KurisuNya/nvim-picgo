@@ -3,6 +3,7 @@ local picgo = require("nvim-picgo.picgo")
 
 local default_opts = {
 	add_image_name = false,
+	auto_paste = false,
 	debug = false,
 }
 
@@ -17,7 +18,12 @@ local function callbackfn(job_id, data, _)
 	end
 	-- check success
 	if picgo.check_success(data) then
-		vim.fn.setreg(vim.v.register, picgo.get_markdown_link(data, default_opts.add_image_name))
+		local markdown_link = picgo.get_markdown_link(data, default_opts.add_image_name)
+		if default_opts.auto_paste then
+			vim.api.nvim_put({ markdown_link }, "l", true, false)
+		else
+			vim.fn.setreg(vim.v.register, markdown_link .. "\n")
+		end
 		message.notify(message.success.upload.info, message.success.upload.level)
 	end
 end

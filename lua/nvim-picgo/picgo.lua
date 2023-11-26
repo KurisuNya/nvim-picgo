@@ -31,9 +31,9 @@ end
 M.get_markdown_link = function(data, add_image_name)
 	local markdown_image_link
 	if add_image_name then
-		markdown_image_link = string.format("![%s](%s)", vim.fn.fnamemodify(data[2], ":t:r"), data[2]) .. "\n"
+		markdown_image_link = string.format("![%s](%s)", vim.fn.fnamemodify(data[2], ":t:r"), data[2])
 	else
-		markdown_image_link = string.format("![](%s)", data[2]) .. "\n"
+		markdown_image_link = string.format("![](%s)", data[2])
 	end
 	return markdown_image_link
 end
