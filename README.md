@@ -86,25 +86,26 @@ $ cat $HOME/.picgo/config.json
 
 It is recommended to use Packer to manage **nvim-picgo**:
 
-```
+``` lua
 use {
-    "KurisuNya/nvim-picgo",
-    config = function()
-        -- it doesn't require you to do any configuration
-        require("nvim-picgo").setup()
-    end
-    }
+  "KurisuNya/nvim-picgo",
+  config = function()
+    -- it doesn't require you to do any configuration
+    require("nvim-picgo").setup()
+  end
+}
 ```
 
 Default configuration items:
 
-```
+``` lua
 {
-    -- Whether the generated markdown link saves the upload name of the image
-    -- boolean
-    add_image_name = false,
-    -- debug mode
-    debug = false,
+  -- Whether the generated markdown link saves the upload name of the image
+  add_image_name = false,
+  -- auto paste next line
+  auto_paste = false,
+  -- debug output
+  debug = false,
 }
 ```
 
@@ -112,13 +113,13 @@ Default configuration items:
 
 viml：
 
-```
+``` vim
 :UploadImagefile<cr>
 ```
 
 lua：
 
-```
+``` vim
 <cmd>lua require'nvim-picgo'.upload_imagefile()<cr>
 ```
 
