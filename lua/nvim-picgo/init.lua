@@ -12,12 +12,12 @@ local function callbackfn(job_id, data, _)
 		vim.pretty_print(data)
 	end
 	-- check error
-	if picgo.check_error(data) then
+	if picgo.check_data_error(data) then
 		vim.fn.jobstop(job_id)
 		message.notify(message.error.upload.info, message.error.upload.level)
 	end
 	-- check success
-	if picgo.check_success(data) then
+	if picgo.check_data_success(data) then
 		local markdown_link = picgo.get_markdown_link(data, default_opts.add_image_name)
 		if default_opts.auto_paste then
 			vim.api.nvim_put({ markdown_link }, "l", true, false)
@@ -54,7 +54,7 @@ function M.upload_imagefile(opts)
 end
 
 function M.setup(opts)
-	if vim.fn.executable("picgo") ~= 1 then
+	if not picgo.check_core_ready() then
 		message.notify(message.error.core.info, message.error.core.level)
 		return
 	end
