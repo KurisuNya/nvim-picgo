@@ -1,3 +1,4 @@
+# nvim-picgo
                                          ____  _       ____
                                         |  _ \(_) ___ / ___| ___
                                         | |_) | |/ __| |  _ / _ \
@@ -6,7 +7,7 @@
 
                                       · picgo plugin for neovim ·
 
-![](https://img.shields.io/badge/Perfect-neovim%20picgo-green)
+Fork from **[askfiy/nvim-picgo](https://github.com/askfiy/nvim-picgo)**, refactor the plugin.
 
 **nvim-picgo** is a picture uploading tool based on Lua language. You can quickly upload images to various image beds through it, and it will also generate links in markdown format 🔗. and store it in the clipboard.
 
@@ -15,25 +16,19 @@ The **[coc-picgo](https://github.com/PLDaily/coc-picgo)** plugin is really envia
 
 ## Features
 
-- Written in pure Lua, less than 300 lines of code
-- No default key bindings, I won't take up your precious keys
-- Quickly upload disk files or clipboard images to the image bed, allowing you to access your images anywhere on the Internet
+- Written in pure Lua, less than 200 lines of code.
+- No default key bindings, I won't take up your precious keys.
+- Quickly upload disk files images to the image bed, allowing you to access your images anywhere on the Internet.
 
-## demo
-
-Upload an image from the clipboard:
-
-![](./demo/demo1.gif)
+## Demo
 
 Upload an image from the file system:
 
-![](./demo/demo2.gif)
+![FromFileSystem](./demo/demo.gif)
 
 ## Dependencies
 
-I recommend you to use **neovim-0.7**.
-
-Besides that, you need to download **[picgo-core](https://github.com/PicGo/PicGo-Core)**, which is a command line tool.
+You need to download **[picgo-core](https://github.com/PicGo/PicGo-Core)**, which is a command line tool.
 
 ```
 $ npm install picgo -g
@@ -93,7 +88,7 @@ It is recommended to use Packer to manage **nvim-picgo**:
 
 ```
 use {
-    "askfiy/nvim-picgo",
+    "KurisuNya/nvim-picgo",
     config = function()
         -- it doesn't require you to do any configuration
         require("nvim-picgo").setup()
@@ -105,13 +100,9 @@ Default configuration items:
 
 ```
 {
-    -- method to informe
-    -- 1. notify
-    -- 2. echo
-    notice = "notify",
     -- Whether the generated markdown link saves the upload name of the image
     -- boolean
-    image_name = false,
+    add_image_name = false,
     -- debug mode
     debug = false,
 }
@@ -122,14 +113,12 @@ Default configuration items:
 viml：
 
 ```
-:UploadClipboard<cr>
 :UploadImagefile<cr>
 ```
 
 lua：
 
 ```
-<cmd>lua require'nvim-picgo'.upload_clipboard()<cr>
 <cmd>lua require'nvim-picgo'.upload_imagefile()<cr>
 ```
 
